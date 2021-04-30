@@ -59,25 +59,55 @@ class UIGenerator {
             
             table+=`</tr>`;
             
-
-            
-            
         }
         
         table+="</tbody>";
         table+=`<tfoot id='pagi'><tr></tr></tfoot>`;
         table+="</table>";
-        
-        
-        
+      
         return table;
         //return table;
 
     }
 
- 
+    chekBoxGenerator=(val)=>{
+        let chkbox=''
+        for(let row of val){
+                //console.log(row['name'])
+                
+                chkbox+=`<input  type='checkbox'id='${row['id']}' name='${row['name']}' value='${row['value']}'><label class="form-check-label" for="exampleCheck1">${row['name']}</label><br>`
+        }
+        
+        return chkbox
+    }
 
-
+    FormGenerator=(data)=>{
+        let label = Object.keys(data[0]);
+        console.log(label)
+        let form_fields=`<form>`;
+            for(let l=0;l<label.length;l++){
+                for(let d of data){
+                form_fields+=`<br>`
+                if(isNaN(d[label[l]])== false){
+                    form_fields+=`<div class="form-group">`
+                    form_fields+=`<label>${label[l]}</label>
+                    <input type='number' value='' id='${label[l]}' class="form-control" style='width:10%'></div>`
+                }
+                if (typeof d[label[l]] === 'string') {
+                    form_fields+=`<div class="form-group">`
+                    form_fields+=`<label>${label[l]}</label>
+                    <input type='text' value='' id='${label[l]}' class="form-control" style='width:40%'></div>`
+                }
+                if (is_date(d[label[l]]))
+                {
+                    console.log(d[label[l]])
+                }
+            } 
+        }
+        form_fields+=`<button  class="btn btn-success">Submit</button>`
+        form_fields+=`</form>`;
+        return form_fields;
+    }
         
 }
 
@@ -100,7 +130,7 @@ function ShowButtons(data,val,val1)
 {
     console.log(val)
 //let row_col= document.getElementsByName('Edit_row').value
-console.log('Hi')
+//console.log('Hi')
 edit_cel=`cel-${val}-${val1}`
 for( let i=1;i<val1;i++){
     inp_id=`inp-${val}-${i}`

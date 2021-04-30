@@ -14,7 +14,28 @@
         </script>
     </head>
     <body>
-    <div id="display_tbl"></div>
-    <div id='pagination_div'></div>
+    <form>
+    <div class="form-group">
+        <div id="display_tbl"></div>
+        
+        <div id='pagination_div' > </div>
+            <div style="display: flex; justify-content: flex-end" class="form-group" >
+                
+                <select id='row_select' class="select-group" aria-label="Default select example" onClick="getRow(this.value)">
+                <option class="dropdown-item dropdown-toggle" value='5'>5</option>
+                <option class="dropdown-item" value='10'>10</option>
+                <option class="dropdown-item" value='15'>15</option>
+                <option class="dropdown-item" value='20'>20</option>
+            </select></div>
+        
+        
+        <hr>
+        <h4>Auto generate Check Box</h4>
+        <div class="form-check" id='checkBoxList'></div>
+    </div>
+    </form>
+    <h4>Auto generate Form </h4>
+        <div class="form-check" id='Auto_form'></div>
     </body>
 </html>
+
